@@ -38,7 +38,7 @@ public class Article {
 
     @ToString.Exclude
     @OrderBy("id")
-    @OneToMany(mappedBy = "article", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    @OneToMany(mappedBy = "article", cascade = CascadeType.ALL)
     private final Set<ArticleComment> articleComments = new LinkedHashSet<>();
 
     @CreatedDate @Column(nullable = false)private LocalDateTime createdAt; // 생성일시
