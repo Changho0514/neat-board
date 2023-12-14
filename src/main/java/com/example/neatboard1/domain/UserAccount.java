@@ -16,9 +16,7 @@ import java.util.Objects;
         @Index(columnList = "createdBy")
 })
 @Entity
-public class UserAccount extends AuditingFields{
-
-
+public class UserAccount extends AuditingFields {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -30,11 +28,10 @@ public class UserAccount extends AuditingFields{
     @Setter @Column(length = 100) private String nickname;
     @Setter private String memo;
 
-    protected UserAccount() {
-    }
 
-    private UserAccount(Long id, String userId, String userPassword, String email, String nickname, String memo) {
-        this.id = id;
+    protected UserAccount() {}
+
+    private UserAccount(String userId, String userPassword, String email, String nickname, String memo) {
         this.userId = userId;
         this.userPassword = userPassword;
         this.email = email;
@@ -42,8 +39,8 @@ public class UserAccount extends AuditingFields{
         this.memo = memo;
     }
 
-    public UserAccount of(Long id, String userId, String userPassword, String email, String nickname, String memo) {
-        return new UserAccount(id, userId, userPassword, email, nickname, memo);
+    public static UserAccount of(String userId, String userPassword, String email, String nickname, String memo) {
+        return new UserAccount(userId, userPassword, email, nickname, memo);
     }
 
     @Override
@@ -57,4 +54,5 @@ public class UserAccount extends AuditingFields{
     public int hashCode() {
         return Objects.hash(id);
     }
+
 }
