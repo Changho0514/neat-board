@@ -168,7 +168,7 @@ class ArticleServiceTest {
                 "ch",
                 "password",
                 "ch@email.com",
-                "Uno",
+                "ch",
                 null
         );
     }
@@ -193,9 +193,9 @@ class ArticleServiceTest {
                 content,
                 hashtag,
                 LocalDateTime.now(),
-                "Uno",
+                "ch",
                 LocalDateTime.now(),
-                "Uno");
+                "ch");
     }
 
     private UserAccountDto createUserAccountDto() {
@@ -204,7 +204,7 @@ class ArticleServiceTest {
                 "ch",
                 "password",
                 "ch@mail.com",
-                "Uno",
+                "ch",
                 "This is memo",
                 LocalDateTime.now(),
                 "ch",
