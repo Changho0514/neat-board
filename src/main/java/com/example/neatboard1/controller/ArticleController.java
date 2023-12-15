@@ -24,8 +24,8 @@ public class ArticleController {
 
     @GetMapping
     public String articles(
-            @RequestParam(required = false) SearchType searchType,
-            @RequestParam(required = false) String searchValue,
+            @RequestParam(name="searchType", required = false) SearchType searchType,
+            @RequestParam(name="searchValue", required = false) String searchValue,
             @PageableDefault(size = 10, sort = "createdAt", direction = Sort.Direction.DESC) Pageable pageable,
             ModelMap map
     ) {
@@ -37,7 +37,7 @@ public class ArticleController {
     public String article(@PathVariable("articleId") Long articleId, ModelMap map) {
         ArticleWithCommentsResponse article = ArticleWithCommentsResponse.from(articleService.getArticle(articleId));
         map.addAttribute("article", article);
-        map.addAttribute("articleComments", article.articleCommentResponses());
+        map.addAttribute("articleComments", article.articleCommentResponse());
 
         return "articles/detail";
     }
