@@ -1,4 +1,4 @@
-package com.example.neatboard1.domain.type;
+package com.example.neatboard1.domain.constant;
 
 import lombok.Getter;
 

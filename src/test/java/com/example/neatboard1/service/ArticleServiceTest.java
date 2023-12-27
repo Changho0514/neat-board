@@ -2,7 +2,7 @@ package com.example.neatboard1.service;
 
 import com.example.neatboard1.domain.Article;
 import com.example.neatboard1.domain.UserAccount;
-import com.example.neatboard1.domain.type.SearchType;
+import com.example.neatboard1.domain.constant.SearchType;
 import com.example.neatboard1.dto.ArticleDto;
 import com.example.neatboard1.dto.ArticleWithCommentsDto;
 import com.example.neatboard1.dto.UserAccountDto;
@@ -260,7 +260,6 @@ class ArticleServiceTest {
 
     private UserAccountDto createUserAccountDto() {
         return UserAccountDto.of(
-                1L,
                 "ch",
                 "password",
                 "ch@mail.com",
