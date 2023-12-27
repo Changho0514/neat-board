@@ -1,11 +1,12 @@
 package com.example.neatboard1.controller;
 
 import com.example.neatboard1.config.SecurityConfig;
-import com.example.neatboard1.domain.type.SearchType;
+import com.example.neatboard1.domain.constant.SearchType;
 import com.example.neatboard1.dto.ArticleWithCommentsDto;
 import com.example.neatboard1.dto.UserAccountDto;
 import com.example.neatboard1.service.ArticleService;
 import com.example.neatboard1.service.PaginationService;
+import com.example.neatboard1.util.FormDataEncoder;
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -32,12 +33,16 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 
 @DisplayName("View 컨트롤러 - 게시글")
 @Import(SecurityConfig.class)
-@WebMvcTest(ArticleController.class)
+@WebMvcTest({ArticleController.class, FormDataEncoder.class})
 class ArticleControllerTest {
     private final MockMvc mvc;
+    private final FormDataEncoder formDataEncoder;
 
-    public ArticleControllerTest(@Autowired MockMvc mvc) {
+    public ArticleControllerTest(@Autowired MockMvc mvc,
+                                 @Autowired FormDataEncoder formDataEncoder
+    ) {
         this.mvc = mvc;
+        this.formDataEncoder = formDataEncoder;
     }
 
     @MockBean
@@ -97,7 +102,7 @@ class ArticleControllerTest {
         // Given
         Long articleId = 1L;
         Long totalCount = 1L;
-        given(articleService.getArticle(articleId)).willReturn(createArticleWithCommentsDto());
+        given(articleService.getArticleWithComments(articleId)).willReturn(createArticleWithCommentsDto());
         given(articleService.getArticleCount()).willReturn(totalCount);
         // When & Then
         mvc.perform(get("/articles/" + articleId))
@@ -203,6 +208,10 @@ class ArticleControllerTest {
         then(paginationService).should().getPaginationBarNumbers(anyInt(), anyInt());
     }
 
+    @DisplayName("[view][GET] 새 게시글 작성 페이지")
+    @Test
+    void givenNothing_whenRequesting_thenReturnsNew
+
 
     private ArticleWithCommentsDto createArticleWithCommentsDto() {
         return ArticleWithCommentsDto.of(
@@ -220,7 +229,7 @@ class ArticleControllerTest {
     }
 
     private UserAccountDto createUserAccountDto() {
-        return UserAccountDto.of(1L,
+        return UserAccountDto.of(
                 "ch",
                 "pw",
                 "ch@mail.com",
