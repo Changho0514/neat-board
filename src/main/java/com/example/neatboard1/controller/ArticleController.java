@@ -93,7 +93,7 @@ public class ArticleController {
     }
 
     @GetMapping("/{articleId}/form")
-    public String updateArticleForm(@PathVariable Long articleId, ModelMap map) {
+    public String updateArticleForm(@PathVariable("articleId") Long articleId, ModelMap map) {
         ArticleResponse article = ArticleResponse.from(articleService.getArticle(articleId));
 
         map.addAttribute("article", article);
@@ -104,7 +104,7 @@ public class ArticleController {
     }
 
     @PostMapping("/{articleId}/form")
-    public String updateArticle(@PathVariable Long articleId, ArticleRequest articleRequest) {
+    public String updateArticle(@PathVariable("articleId") Long articleId, ArticleRequest articleRequest) {
         // TODO: 인증 정보를 넣어줘야 한다.
         articleService.saveArticle(articleRequest.toDto(UserAccountDto.of(
                 "ch",
@@ -118,7 +118,7 @@ public class ArticleController {
     }
 
     @PostMapping("/{articleId}/delete")
-    public String deleteArticle(@PathVariable Long articleId) {
+    public String deleteArticle(@PathVariable("articleId") Long articleId) {
         // TODO : 인증 정보를 넣어줘야 한다.
         articleService.deleteArticle(articleId);
 
