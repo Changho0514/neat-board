@@ -7,7 +7,7 @@ import com.example.neatboard1.dto.ArticleDto;
 import com.example.neatboard1.dto.ArticleWithCommentsDto;
 import com.example.neatboard1.dto.UserAccountDto;
 import com.example.neatboard1.dto.request.ArticleRequest;
-import com.example.neatboard1.response.ArticleResponse;
+import com.example.neatboard1.dto.response.ArticleResponse;
 import com.example.neatboard1.service.ArticleService;
 import com.example.neatboard1.service.PaginationService;
 import com.example.neatboard1.util.FormDataEncoder;

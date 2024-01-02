@@ -2,11 +2,10 @@ package com.example.neatboard1.controller;
 
 import com.example.neatboard1.domain.constant.FormStatus;
 import com.example.neatboard1.domain.constant.SearchType;
-import com.example.neatboard1.dto.UserAccountDto;
 import com.example.neatboard1.dto.request.ArticleRequest;
 import com.example.neatboard1.dto.security.BoardPrincipal;
-import com.example.neatboard1.response.ArticleResponse;
-import com.example.neatboard1.response.ArticleWithCommentsResponse;
+import com.example.neatboard1.dto.response.ArticleResponse;
+import com.example.neatboard1.dto.response.ArticleWithCommentsResponse;
 import com.example.neatboard1.service.ArticleService;
 import com.example.neatboard1.service.PaginationService;
 import lombok.RequiredArgsConstructor;
