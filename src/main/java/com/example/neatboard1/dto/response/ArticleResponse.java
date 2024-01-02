@@ -1,7 +1,6 @@
-package com.example.neatboard1.response;
+package com.example.neatboard1.dto.response;
 import com.example.neatboard1.dto.ArticleDto;
 
-import java.io.Serializable;
 import java.time.LocalDateTime;
 
 public record ArticleResponse(
